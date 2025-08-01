@@ -1,4 +1,4 @@
-package se.marcuskarlberg.EmailNotificationService;
+package se.marcuskarlberg.EmailNotificationService.exception;
 
 public class RetriableException extends RuntimeException{
   public RetriableException(String message) {

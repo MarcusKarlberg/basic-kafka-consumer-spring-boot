@@ -1,4 +1,4 @@
-package se.marcuskarlberg.EmailNotificationService;
+package se.marcuskarlberg.EmailNotificationService.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,12 +7,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.annotation.*;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
+import se.marcuskarlberg.EmailNotificationService.exception.NotRetriableException;
+import se.marcuskarlberg.EmailNotificationService.exception.RetriableException;
 import se.marcuskarlberg.core.ProductCreatedEvent;
 
-import static se.marcuskarlberg.EmailNotificationService.ProductCreatedEventHandler.TOPIC_NAME;
+import static se.marcuskarlberg.EmailNotificationService.handler.ProductCreatedEventHandler.TOPIC_NAME;
 
 @Component
 @KafkaListener(topics = TOPIC_NAME)

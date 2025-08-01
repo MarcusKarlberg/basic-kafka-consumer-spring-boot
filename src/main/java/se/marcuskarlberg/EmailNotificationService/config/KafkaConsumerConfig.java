@@ -1,4 +1,4 @@
-package se.marcuskarlberg.EmailNotificationService;
+package se.marcuskarlberg.EmailNotificationService.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -15,6 +15,8 @@ import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.util.backoff.FixedBackOff;
+import se.marcuskarlberg.EmailNotificationService.exception.NotRetriableException;
+import se.marcuskarlberg.EmailNotificationService.exception.RetriableException;
 
 import java.util.HashMap;
 import java.util.Map;
