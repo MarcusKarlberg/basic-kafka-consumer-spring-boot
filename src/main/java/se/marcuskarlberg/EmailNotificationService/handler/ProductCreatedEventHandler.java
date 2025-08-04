@@ -30,11 +30,14 @@ public class ProductCreatedEventHandler {
   @KafkaHandler
   public void handler(ProductCreatedEvent productCreateEvent) {
     String requestUrl = "http://localhost:8080";
+    LOG.info(
+      "NEW EVENT:  {} with productId: {}", productCreateEvent.getTitle(), productCreateEvent.getProductId()
+    );
 
     try {
       ResponseEntity<String> response = restTemplate.exchange(requestUrl, HttpMethod.GET, null, String.class);
       if(response.getStatusCode().value() == HttpStatus.OK.value()) {
-        LOG.info("Received new event: Title: {} - Price: {} - Quantity: {} - Id: {}",
+        LOG.info("Event data: Title: {} - Price: {} - Quantity: {} - Id: {}",
           productCreateEvent.getTitle(), productCreateEvent.getPrice(), productCreateEvent.getQuantity(), productCreateEvent.getProductId());
       }
     } catch (ResourceAccessException e) {
