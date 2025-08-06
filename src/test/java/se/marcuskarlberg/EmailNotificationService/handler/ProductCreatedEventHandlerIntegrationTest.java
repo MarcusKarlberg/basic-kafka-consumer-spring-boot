@@ -64,7 +64,7 @@ public class ProductCreatedEventHandlerIntegrationTest {
     record.headers().add(KafkaHeaders.RECEIVED_KEY, messageKey.getBytes());
 
     when(processedEventRepository.findByMessageId(anyString()))
-      .thenReturn(Optional.of(new ProcessedEvent(UUID.randomUUID().toString(), UUID.randomUUID().toString())));
+      .thenReturn(Optional.empty());
     when(processedEventRepository.save(any())).thenReturn(null);
 
     String responseBody = "{\"key\":\"value\"}";
